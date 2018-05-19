@@ -5,7 +5,9 @@ import com.demo.Proxy.BusinessProcessorHandler;
 import javax.management.MBeanServer;
 import javax.management.MBeanServerFactory;
 import javax.management.ObjectName;
+import javax.management.StandardMBean;
 import java.lang.reflect.Proxy;
+import java.net.URLEncoder;
 
 /**
  * 动态 MBbean
@@ -15,6 +17,12 @@ public class Main {
     private static MBeanServer mBeanServer;
 
     public static void main(String[] args) throws Exception {
+//        StringBuilder sb = new StringBuilder();
+//        UTF8UrlEncoder.appendEncoded(sb, "{\"content\":\"\uD83C\uDF0F\",\"extra\":\"\"}");
+//        String str = URLEncoder.encode("{\"content\":\"\uD83C\uDF0F\",\"extra\":\"\"}", "UTF-8");
+//        System.out.println(sb);
+//        System.out.println(str);
+//        System.getProperties().put("sun.misc.ProxyGenerator.saveGeneratedFiles", "true");
         init();
         System.out.println("===============================");
         manage();
@@ -27,8 +35,9 @@ public class Main {
          * StandardMBean
          */
         ServerImpl serverImpl = new ServerImpl();
-//        StandardMBean standardServerMonitor = new StandardMBean(serverImpl, Impl.class);
-        StandardServerMonitor standardServerMonitor = new StandardServerMonitor(serverImpl, Impl.class);
+        StandardMBean standardServerMonitor = new StandardMBean(serverImpl, Impl.class);
+        System.out.println(standardServerMonitor.getMBeanInterface());
+//        StandardServerMonitor standardServerMonitor = new StandardServerMonitor(serverImpl, Impl.class);
         Impl impl = Impl.class.cast(standardServerMonitor.getImplementation());
         impl.showTime();
         mBeanServer.registerMBean(standardServerMonitor, objectName);
@@ -44,6 +53,10 @@ public class Main {
         Impl server = (Impl) Proxy.newProxyInstance(Impl.class.getClassLoader(), new Class[]{Impl.class}, handler);
         StandardServerMonitor standardMonitor = new StandardServerMonitor(server, Impl.class);
         Impl.class.cast(standardMonitor.getImplementation()).showTime();
+
+        MBeanServerImplHandler implHandler = new MBeanServerImplHandler(Impl.class);
+        Impl implServer = (Impl) Proxy.newProxyInstance(Impl.class.getClassLoader(), new Class[]{Impl.class}, implHandler);
+        implServer.showTime();
     }
 
     private static void manage() throws Exception {

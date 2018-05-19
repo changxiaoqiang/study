@@ -1,5 +1,5 @@
 package com.demo.Proxy;
 
 public interface BusinessProcessor {
-    public void processBusiness();
+    public void processBusiness(String param);
 }

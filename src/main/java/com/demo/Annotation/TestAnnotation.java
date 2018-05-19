@@ -18,6 +18,10 @@ public class TestAnnotation {
     public TestAnnotation() {
     }
 
+    @MyConstructorAnnotation(desc = "The class constructor with param", uri = "com.test.annotation.Test#MySample with param")
+    public TestAnnotation(String name) {
+    }
+
 //    @MyMethodAnnotation(desc = "The class method getId", uri = "com.test.annotation.Test#getId")
     public String getId() {
         return id;
@@ -43,7 +47,8 @@ public class TestAnnotation {
         System.out.println(InterfaceAnnotation.class.getAnnotation(Description.class).value());
         System.out.println(InterfaceAnnotation.class.getDeclaredMethod("getRefreshInterval"));
         System.out.println(InterfaceAnnotation.class.getDeclaredMethod("getRefreshInterval").getAnnotation(IntDefaultValue.class).value());
-        System.out.println(InterfaceAnnotation.DefaultValue.class);
+        System.out.println(InterfaceAnnotation.class.getDeclaredMethod("getRefreshInterval").getAnnotation(Description.class).value());
+        System.out.println(InterfaceAnnotation.DefaultValue.class.getDeclaredMethod("demo").getDefaultValue());
 
         Class<TestAnnotation> clazz = TestAnnotation.class;
         // 得到类注解
@@ -51,9 +56,11 @@ public class TestAnnotation {
         System.out.println(myClassAnnotation.desc() + " " + myClassAnnotation.uri());
 
         // 得到构造方法注解
-        Constructor<TestAnnotation> cons = clazz.getConstructor(new Class[]{});
+        Constructor<TestAnnotation> cons = clazz.getConstructor(new Class[]{String.class});
         MyConstructorAnnotation myConstructorAnnotation = cons.getAnnotation(MyConstructorAnnotation.class);
         System.out.println(myConstructorAnnotation.desc() + " " + myConstructorAnnotation.uri());
+        MyConstructorAnnotation myConstructorAnnotationWithParam = cons.getAnnotation(MyConstructorAnnotation.class);
+        System.out.println(myConstructorAnnotationWithParam.desc() + " " + myConstructorAnnotationWithParam.uri());
 
         // 获取方法注解
         Method method = clazz.getMethod("setId", new Class[]{String.class});

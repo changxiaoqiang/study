@@ -11,6 +11,6 @@ public class Main {
         BusinessProcessorImpl bpimpl = new BusinessProcessorImpl();
         BusinessProcessorHandler handler = new BusinessProcessorHandler(bpimpl);
         BusinessProcessor bp = (BusinessProcessor) Proxy.newProxyInstance(BusinessProcessor.class.getClassLoader(), new Class[]{BusinessProcessor.class}, handler);
-        bp.processBusiness();
+        bp.processBusiness("Proxy 代理");
     }
 }
