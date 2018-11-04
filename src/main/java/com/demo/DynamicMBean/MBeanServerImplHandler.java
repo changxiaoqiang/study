@@ -1,17 +1,17 @@
 package com.demo.DynamicMBean;
 
-import javax.management.MBeanServer;
+import com.demo.Annotation.InterfaceAnnotation;
+
 import javax.management.ObjectName;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 
-public class MBeanServerHandler implements InvocationHandler {
-    private MBeanServer mBeanServer;
+public class MBeanServerImplHandler implements InvocationHandler {
+    private Class object;
     private ObjectName objectName;
 
-    public MBeanServerHandler(MBeanServer object, ObjectName objectName) {
-        this.mBeanServer = object;
-        this.objectName = objectName;
+    public MBeanServerImplHandler(Class object) {
+        this.object = object;
     }
 
     /**
@@ -61,6 +61,8 @@ public class MBeanServerHandler implements InvocationHandler {
      */
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-        return mBeanServer.invoke(objectName, method.getName(), args, null);
+        Object result = object.getDeclaredMethod("showTime").getAnnotation(InterfaceAnnotation.DefaultValue.class).value();
+        System.out.println("哈哈啊哈" + result);
+        return result;
     }
 }

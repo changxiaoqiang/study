@@ -43,6 +43,8 @@ public class TestAnnotation {
         System.out.println(InterfaceAnnotation.class.getAnnotation(Description.class).value());
         System.out.println(InterfaceAnnotation.class.getDeclaredMethod("getRefreshInterval"));
         System.out.println(InterfaceAnnotation.class.getDeclaredMethod("getRefreshInterval").getAnnotation(IntDefaultValue.class).value());
+
+        System.out.println(InterfaceAnnotation.class.getDeclaredMethod("getRefreshInterval").getAnnotation(IntDefaultValue.class).value());
         System.out.println(InterfaceAnnotation.DefaultValue.class);
 
         Class<TestAnnotation> clazz = TestAnnotation.class;

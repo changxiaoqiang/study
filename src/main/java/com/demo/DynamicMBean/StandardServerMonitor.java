@@ -93,6 +93,14 @@ public class StandardServerMonitor extends StandardMBean {
     @Override
     public Object invoke(String actionName, Object[] params, String[] signature) throws MBeanException, ReflectionException {
         ServerImpl serverTarget = (ServerImpl) target;
+
+        if (actionName.equals("showTime")) {
+            try {
+                return ServerImpl.class.getMethod(actionName).invoke(serverTarget);
+            } catch (Exception e) {
+
+            }
+        }
         return System.currentTimeMillis() - serverTarget.startTime;
     }
 

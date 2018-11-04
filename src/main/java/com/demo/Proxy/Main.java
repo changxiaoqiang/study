@@ -8,6 +8,9 @@ import java.lang.reflect.Proxy;
  */
 public class Main {
     public static void main(String[] args) {
+        System.getProperties().put("sun.misc.ProxyGenerator.saveGeneratedFiles", "true");
+        String saveGeneratedFiles = System.getProperty("sun.misc.ProxyGenerator.saveGeneratedFiles");
+        System.out.println(saveGeneratedFiles);
         BusinessProcessorImpl bpimpl = new BusinessProcessorImpl();
         BusinessProcessorHandler handler = new BusinessProcessorHandler(bpimpl);
         BusinessProcessor bp = (BusinessProcessor) Proxy.newProxyInstance(BusinessProcessor.class.getClassLoader(), new Class[]{BusinessProcessor.class}, handler);
