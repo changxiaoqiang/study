@@ -8,6 +8,7 @@ public class ServerImpl implements Impl {
 
     @Override
     public void showTime() {
+        System.out.println("?????");
         System.out.println(System.currentTimeMillis());
     }
 

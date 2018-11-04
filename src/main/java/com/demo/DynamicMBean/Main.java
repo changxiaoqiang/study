@@ -66,11 +66,19 @@ public class Main {
         mBeanServer.invoke(objectName, "showTime",null, null);
         System.out.println(mBeanServer.invoke(objectName, "showTime",null, null));
 
+        System.out.println("1============================");
         MBeanServerHandler handler = new MBeanServerHandler(mBeanServer, objectName);
         Impl server = (Impl) Proxy.newProxyInstance(Impl.class.getClassLoader(), new Class[]{Impl.class}, handler);
         StandardServerMonitor standardMonitor = new StandardServerMonitor(server, Impl.class);
         System.out.print("Proxy:");
-        Impl.class.cast(standardMonitor.getImplementation()).showTime();
+//        System.out.println(standardMonitor.getAttribute("UpTime"));
+        Impl impl = Impl.class.cast(standardMonitor.getImplementation());
+        impl.showTime();
+        long time = impl.getUpTime();
+        System.out.println(time);
+        Thread.sleep(10);
+        System.out.println("2============================");
+
 
         ObjectName newObjectName = new ObjectName("objectName:id=ServerMonitor2");
         System.out.println(mBeanServer.getAttribute(newObjectName,"UpTime"));

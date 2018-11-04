@@ -1,13 +1,5 @@
 package com.demo.test;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 public class HeapSort extends Sort {
     /**
      * 初始化构建堆
@@ -98,29 +90,7 @@ public class HeapSort extends Sort {
         return (current << 1) + 2;
     }
 
-    class Obj {
-        String name;
-        String sex;
-
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
-
-        public String getSex() {
-            return sex;
-        }
-
-        public void setSex(String sex) {
-            this.sex = sex;
-        }
-    }
-
-    public static void main(String[] args) throws Exception {
-
+    public static void main(String[] args) {
         HeapSort sort = new HeapSort();
         String[] sortArr = new String[]{"S", "O", "R", "T", "E", "X", "A", "M", "P", "L", "E"};
         int[] arr = {49, 38, 27, 65, 97, 13, 76};
