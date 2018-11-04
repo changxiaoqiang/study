@@ -14,7 +14,8 @@ public class ParseAnnotation {
      */
     public static <T> void parseMethod(Class<T> clazz) {
         try {
-            T obj = clazz.newInstance();
+//            T obj = clazz.newInstance();
+            T obj = clazz.getDeclaredConstructor(new Class[]{String.class}).newInstance("中文");
             for (Method method : clazz.getDeclaredMethods()) {
                 System.out.println("------START: " + method.getName() + "-------");
                 MyMethodAnnotation methodAnnotation = method.getAnnotation(MyMethodAnnotation.class);

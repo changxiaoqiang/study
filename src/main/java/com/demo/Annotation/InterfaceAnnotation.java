@@ -25,7 +25,7 @@ public interface InterfaceAnnotation {
     public int getCfgBlockDuration();
 
     @Retention(RetentionPolicy.RUNTIME)
-    @Target(ElementType.TYPE)
+    @Target({ElementType.TYPE, ElementType.METHOD})
     public @interface DefaultValue {
         String value() default "Default value";
 
