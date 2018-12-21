@@ -1,20 +1,12 @@
 package com.demo.test;
 
-<<<<<<< HEAD
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
-class SingleTon {
-    private static SingleTon singleTon = new SingleTon();
-    public static int count1;
-    public static int count2 = 0;
-=======
 class SingleTon {
     public static int count1;
     public static int count2 = 1;
     private static SingleTon singleTon = new SingleTon();
->>>>>>> 375a329dbe180b244d4b347019e02040faa42f34
 
     private SingleTon() {
         count1++;
@@ -27,7 +19,6 @@ class SingleTon {
 }
 
 public class Test {
-<<<<<<< HEAD
 
 //    @SafeVarargs // Not actually safe!
     static void m(List<String>... stringLists) {
@@ -39,13 +30,10 @@ public class Test {
         System.out.println(s);
     }
 
-=======
->>>>>>> 375a329dbe180b244d4b347019e02040faa42f34
     public static void main(String[] args) {
         SingleTon singleTon = SingleTon.getInstance();
         System.out.println("count1=" + singleTon.count1);
         System.out.println("count2=" + singleTon.count2);
-<<<<<<< HEAD
 
         List<String> list = new ArrayList<String>() {{
             add("bb");
@@ -55,7 +43,5 @@ public class Test {
             add("aa");
             add("cc");
         }});
-=======
->>>>>>> 375a329dbe180b244d4b347019e02040faa42f34
     }
 }
