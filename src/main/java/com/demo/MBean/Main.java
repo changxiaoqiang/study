@@ -28,7 +28,7 @@ public class Main {
         ObjectName objectName = new ObjectName("objectName:id=ServerMonitor1");
         System.out.println(mBeanServer.getAttribute(objectName,"UpTime"));
 
-        System.out.println(mBeanServer.invoke(objectName, "getUpTime", null, null));
+        System.out.println(mBeanServer.invoke(objectName, "showName", null, null));
 
         mBeanServer.invoke(objectName, "printTime", null, null);
         System.out.println("=====");

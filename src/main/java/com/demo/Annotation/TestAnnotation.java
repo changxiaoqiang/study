@@ -18,6 +18,10 @@ public class TestAnnotation {
     public TestAnnotation() {
     }
 
+    public TestAnnotation(String str) {
+        System.out.println(str);
+    }
+
 //    @MyMethodAnnotation(desc = "The class method getId", uri = "com.test.annotation.Test#getId")
     public String getId() {
         return id;
@@ -44,7 +48,6 @@ public class TestAnnotation {
         System.out.println(InterfaceAnnotation.class.getDeclaredMethod("getRefreshInterval"));
         System.out.println(InterfaceAnnotation.class.getDeclaredMethod("getRefreshInterval").getAnnotation(IntDefaultValue.class).value());
 
-        System.out.println(InterfaceAnnotation.class.getDeclaredMethod("getRefreshInterval").getAnnotation(IntDefaultValue.class).value());
         System.out.println(InterfaceAnnotation.DefaultValue.class);
 
         Class<TestAnnotation> clazz = TestAnnotation.class;

@@ -13,6 +13,11 @@ public class ServerMonitor implements ServerMonitorMBean {
     }
 
     @Override
+    public String showName() {
+        return ServerMonitor.class.getName();
+    }
+
+    @Override
     public void printTime(){
         System.out.println(System.currentTimeMillis());
     }
