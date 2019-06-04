@@ -21,6 +21,7 @@ public class BubbleSort extends Sort {
                     temp = numbers[j];
                     numbers[j] = numbers[j + 1];
                     numbers[j + 1] = temp;
+                    //System.out.print("内循环:");showArr(numbers);
                 }
             }
             showArr(numbers);

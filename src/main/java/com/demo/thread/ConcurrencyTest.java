@@ -1,9 +1,30 @@
 package com.demo.thread;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
 public class ConcurrencyTest {
     private static final long COUNT = 100000l;
 
     public static void main(String[] args) throws InterruptedException {
+        List<String> userNames = new ArrayList<String>() {{
+            add("Hollis");
+            add("hollis");
+            add("HollisChuang");
+            add("H");
+        }};
+
+        Iterator<String> u = userNames.iterator();
+        if (u.hasNext()) {
+            if (u.next().equals("Hollis")) {
+                u.remove();
+            }
+        }
+
+
+
+        System.out.println(userNames);
         serial();
         Concurrency();
     }

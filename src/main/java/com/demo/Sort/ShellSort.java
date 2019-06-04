@@ -18,6 +18,7 @@ public class ShellSort extends Sort {
         int temp = 0;
         //每次将步长缩短为原来的一半
         for (int increment = data.length / 2; increment > 0; increment /= 2) {
+            System.out.println(increment);
             for (int i = increment; i < data.length; i++) {
                 temp = data[i];
                 for (j = i; j >= increment; j -= increment) {
@@ -37,7 +38,7 @@ public class ShellSort extends Sort {
 
     public static void main(String[] args) {
         Sort sort = new ShellSort();
-        int[] arr = {49, 38, 65, 97, 76, 13, 27, 65};
+        int[] arr = {49, 38, 65, 97, 76, 13, 27, 64};
         showArr(arr);
         System.out.println("====================");
 
