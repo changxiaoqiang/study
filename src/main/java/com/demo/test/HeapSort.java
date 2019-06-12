@@ -7,14 +7,14 @@ public class HeapSort extends Sort {
      * @param data
      */
     private void buildMaxHeap(int[] data) {
-        //根据最后一个元素获取，开始调整的位置
+        //获取最后一个非叶子节点
         int startIndex = getParentIndex(data.length - 1);
-        System.out.println(data[startIndex]);
         //反复进行调整
         for (int i = startIndex; i >= 0; i--) {
             maxHeap(data, data.length, i);
-            showArr(data);
+//            showArr(data);
         }
+        showArr(data);
     }
 
     /**
@@ -25,6 +25,7 @@ public class HeapSort extends Sort {
      * @param index
      */
     private void maxHeap(int[] data, int heapSize, int index) {
+
         //取得当前节点的左右节点，当前节点为index
         int left = getChildLeftIndex(index);
         int right = getChildRightIndex(index);
@@ -38,9 +39,7 @@ public class HeapSort extends Sort {
         }
         //交换位置
         if (largest != index) {
-            int temp = data[index];
-            data[index] = data[largest];
-            data[largest] = temp;
+            swap(data, largest, index);
             maxHeap(data, heapSize, largest);
         }
     }
@@ -54,11 +53,10 @@ public class HeapSort extends Sort {
     public int[] sort(int[] data, int... args) {
         //每次循环都能取到一个最大值，该值为根节点
         for (int i = data.length - 1; i > 0; i--) {
-            int temp = data[0];
-            data[0] = data[i];
-            data[i] = temp;
+            swap(data, 0 , i);
             //每次调整都是从根节点开始i不断减小，保证前一次最大节点不会参与到调整堆
             maxHeap(data, i, 0);
+            showArr(data);
         }
         return data;
     }
@@ -80,7 +78,6 @@ public class HeapSort extends Sort {
     private int getChildLeftIndex(int current) {
         return (current << 1) + 1;
     }
-
     /**
      * 获得右子节点的位置
      *
@@ -93,7 +90,7 @@ public class HeapSort extends Sort {
     public static void main(String[] args) {
         HeapSort sort = new HeapSort();
         String[] sortArr = new String[]{"S", "O", "R", "T", "E", "X", "A", "M", "P", "L", "E"};
-        int[] arr = {49, 38, 27, 65, 97, 13, 76};
+        int[] arr = {49, 38, 27, 65, 97, 76, 13, 80, 81, 50, 52, 66};
         showArr(arr);
         System.out.println("====================");
         sort.buildMaxHeap(arr);

@@ -1,7 +1,5 @@
 package com.demo.test;
 
-import com.demo.Sort.MergeSort;
-
 public class QuickSort extends Sort {
     @Override
     public int[] sort(int[] arr, int... args) {
@@ -15,7 +13,6 @@ public class QuickSort extends Sort {
             sort(arr, low, mid);
             sort(arr, mid + 1, high);
         }
-        showArr(arr);
         return arr;
     }
 
@@ -26,22 +23,20 @@ public class QuickSort extends Sort {
                 high--;
             }
             arr[low] = arr[high];
-            showArr(arr);
             while (low < high && arr[low] < temp) {
                 low++;
             }
             arr[high] = arr[low];
-            showArr(arr);
         }
         arr[low] = temp;
-        //中轴记录到尾
         showArr(arr);
+        //中轴记录到尾
         return low;
     }
 
     public static void main(String[] args) {
         Sort sort = new QuickSort();
-        int[] arr = {49, 38, 65, 97, 76, 13, 27};
+        int[] arr = {38, 65, 24, 97, 13, 76, 25, 49, 26, 27};
         showArr(arr);
         System.out.println("====================");
 
