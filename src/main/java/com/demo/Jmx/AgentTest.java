@@ -1,6 +1,5 @@
 package com.demo.Jmx;
 
-
 import com.sun.jdmk.comm.HtmlAdaptorServer;
 
 import javax.management.Attribute;
@@ -12,7 +11,8 @@ import java.lang.management.ManagementFactory;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 
-public class HelloAgent {
+public class AgentTest {
+
     public static void main(String[] args) throws Exception {
         // 下面这种方式不能再JConsole中使用
 //      MBeanServer server = MBeanServerFactory.createMBeanServer();
@@ -27,18 +27,25 @@ public class HelloAgent {
 // 将new Hello()这个对象注册到MBeanServer上去
         mbs.registerMBean(new Hello(), helloName);
 
-// Distributed Layer, 提供了一个HtmlAdaptor。支持Http访问协议，并且有一个不错的HTML界面，这里的Hello就是用这个作为远端管理的界面
-// 事实上HtmlAdaptor是一个简单的HttpServer，它将Http请求转换为JMX Agent的请求
-        ObjectName adapterName = new ObjectName(domainName + ":name=htmladapter,port=8082");
-        HtmlAdaptorServer adapter = new HtmlAdaptorServer();
-        adapter.start();
-        mbs.registerMBean(adapter, adapterName);
-
-        int rmiPort = 1010;
+        int rmiPort = 8010;
         Registry registry = LocateRegistry.createRegistry(rmiPort);
 
         JMXServiceURL url = new JMXServiceURL("service:jmx:rmi:///jndi/rmi://localhost:" + rmiPort + "/" + domainName);
         JMXConnectorServer jmxConnector = JMXConnectorServerFactory.newJMXConnectorServer(url, null, mbs);
         jmxConnector.start();
+
+        System.out.println("=======================");
+        JMXConnector connector = JMXConnectorFactory.connect(url);
+        connector.connect();
+
+        MBeanServerConnection server = connector.getMBeanServerConnection();
+        server.setAttribute(helloName, new Attribute("Name", "测试 OK?"));
+        String attrValue = server.getAttribute(helloName, "Name").toString();
+        System.out.println(attrValue);
+
+        server.invoke(helloName, "printHello", null, null);
+        server.invoke(helloName, "printHello", new String[]{"牛逼了"}, new String[]{String.class.getName()});
+        connector.close();
+        System.out.println("=======================");
     }
 }
