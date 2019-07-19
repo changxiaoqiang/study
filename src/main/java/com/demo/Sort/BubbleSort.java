@@ -9,6 +9,17 @@ package com.demo.Sort;
  */
 public class BubbleSort extends Sort {
 
+    public static void main(String[] args) {
+        Sort sort = new BubbleSort();
+        int[] arr = {49, 38, 65, 97, 76, 13, 27};
+        showArr(arr);
+        System.out.println("====================");
+
+        int[] result = sort.sort(arr);
+        System.out.println("====================");
+        showArr(result);
+    }
+
     @Override
     public int[] sort(int[] numbers) {
         int temp = 0;
@@ -27,17 +38,6 @@ public class BubbleSort extends Sort {
             showArr(numbers);
         }
         return numbers;
-    }
-
-    public static void main(String[] args) {
-        Sort sort = new BubbleSort();
-        int[] arr = {49, 38, 65, 97, 76, 13, 27};
-        showArr(arr);
-        System.out.println("====================");
-
-        int[] result = sort.sort(arr);
-        System.out.println("====================");
-        showArr(result);
     }
 }
 

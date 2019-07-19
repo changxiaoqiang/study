@@ -5,6 +5,27 @@ public class UTF8UrlEncoder {
     private static final int[] SAFE_ASCII = new int[128];
     private static final char[] HEX;
 
+    static {
+        int i;
+        for (i = 97; i <= 122; ++i) {
+            SAFE_ASCII[i] = 1;
+        }
+
+        for (i = 65; i <= 90; ++i) {
+            SAFE_ASCII[i] = 1;
+        }
+
+        for (i = 48; i <= 57; ++i) {
+            SAFE_ASCII[i] = 1;
+        }
+
+        SAFE_ASCII[45] = 1;
+        SAFE_ASCII[46] = 1;
+        SAFE_ASCII[95] = 1;
+        SAFE_ASCII[126] = 1;
+        HEX = "0123456789ABCDEF".toCharArray();
+    }
+
     private UTF8UrlEncoder() {
     }
 
@@ -18,7 +39,7 @@ public class UTF8UrlEncoder {
         int[] safe = SAFE_ASCII;
         int i = 0;
 
-        for(int len = input.length(); i < len; ++i) {
+        for (int len = input.length(); i < len; ++i) {
             char c = input.charAt(i);
             if (c <= 127) {
                 if (safe[c] != 0) {
@@ -54,26 +75,5 @@ public class UTF8UrlEncoder {
             appendSingleByteEncoded(sb, 128 | value & 63);
         }
 
-    }
-
-    static {
-        int i;
-        for(i = 97; i <= 122; ++i) {
-            SAFE_ASCII[i] = 1;
-        }
-
-        for(i = 65; i <= 90; ++i) {
-            SAFE_ASCII[i] = 1;
-        }
-
-        for(i = 48; i <= 57; ++i) {
-            SAFE_ASCII[i] = 1;
-        }
-
-        SAFE_ASCII[45] = 1;
-        SAFE_ASCII[46] = 1;
-        SAFE_ASCII[95] = 1;
-        SAFE_ASCII[126] = 1;
-        HEX = "0123456789ABCDEF".toCharArray();
     }
 }

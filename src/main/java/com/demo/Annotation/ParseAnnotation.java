@@ -1,6 +1,8 @@
 package com.demo.Annotation;
 
-import com.demo.Annotation.MyAnnotation.*;
+import com.demo.Annotation.MyAnnotation.MyClassAnnotation;
+import com.demo.Annotation.MyAnnotation.MyMethodAnnotation;
+import com.demo.Annotation.MyAnnotation.Yts;
 
 import java.lang.reflect.Method;
 import java.util.Arrays;

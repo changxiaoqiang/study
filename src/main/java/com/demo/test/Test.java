@@ -20,7 +20,7 @@ class SingleTon {
 
 public class Test {
 
-//    @SafeVarargs // Not actually safe!
+    //    @SafeVarargs // Not actually safe!
     static void m(List<String>... stringLists) {
 
 //        Object[] array = stringLists;

@@ -1,6 +1,17 @@
 package com.demo.test;
 
 public class MergeSort extends Sort {
+    public static void main(String[] args) {
+        Sort sort = new MergeSort();
+        int[] arr = {49, 38, 65, 97, 76, 13, 27, 49};
+        showArr(arr);
+        System.out.println("====================");
+
+        int[] result = sort.sort(arr, 0, arr.length - 1);
+        System.out.println("====================");
+        showArr(result);
+    }
+
     @Override
     public int[] sort(int[] arr, int... args) {
         if (args.length != 2) {
@@ -32,7 +43,7 @@ public class MergeSort extends Sort {
             }
         }
 
-        while (l<=mid) {
+        while (l <= mid) {
             tmp[k++] = arr[l++];
         }
         while (r <= high) {
@@ -42,16 +53,5 @@ public class MergeSort extends Sort {
         for (int i = 0; i < tmp.length; i++) {
             arr[i + low] = tmp[i];
         }
-    }
-
-    public static void main(String[] args) {
-        Sort sort = new MergeSort();
-        int[] arr = {49, 38, 65, 97, 76, 13, 27, 49};
-        showArr(arr);
-        System.out.println("====================");
-
-        int[] result = sort.sort(arr, 0, arr.length - 1);
-        System.out.println("====================");
-        showArr(result);
     }
 }

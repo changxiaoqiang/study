@@ -3,12 +3,12 @@ package com.demo.MBean;
 public class ServerMonitor implements ServerMonitorMBean {
     private final ServerImpl target;
 
-    public ServerMonitor(ServerImpl target){
+    public ServerMonitor(ServerImpl target) {
         this.target = target;
     }
 
     @Override
-    public String getUpTime(){
+    public String getUpTime() {
         return String.valueOf(System.currentTimeMillis() - target.startTime);
     }
 
@@ -18,7 +18,7 @@ public class ServerMonitor implements ServerMonitorMBean {
     }
 
     @Override
-    public void printTime(){
+    public void printTime() {
         System.out.println(System.currentTimeMillis());
     }
 }

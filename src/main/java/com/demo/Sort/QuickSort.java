@@ -1,6 +1,17 @@
 package com.demo.Sort;
 
 public class QuickSort extends Sort {
+    public static void main(String[] args) {
+        Sort sort = new QuickSort();
+        int[] arr = {49, 38, 65, 97, 76, 13, 27, 49};
+        showArr(arr);
+        System.out.println("====================");
+
+        int[] result = sort.sort(arr);
+        System.out.println("====================");
+        showArr(result);
+    }
+
     /**
      * 查找出中轴（默认是最低位low）的在numbers数组排序后所在位置
      *
@@ -32,10 +43,11 @@ public class QuickSort extends Sort {
         // 返回中轴的位置
     }
 
-    /** @param numbers 带排序数组
-     * @param low 开始位置
-     * @param high 结束位置
-    */
+    /**
+     * @param numbers 带排序数组
+     * @param low     开始位置
+     * @param high    结束位置
+     */
     public int[] quickSort(int[] numbers, int low, int high) {
         if (low < high) {
             int middle = getMiddle(numbers, low, high);
@@ -56,17 +68,6 @@ public class QuickSort extends Sort {
         }
 
         return numbers;
-    }
-
-    public static void main(String[] args) {
-        Sort sort = new QuickSort();
-        int[] arr = {49, 38, 65, 97, 76, 13, 27, 49};
-        showArr(arr);
-        System.out.println("====================");
-
-        int[] result = sort.sort(arr);
-        System.out.println("====================");
-        showArr(result);
     }
 
 }

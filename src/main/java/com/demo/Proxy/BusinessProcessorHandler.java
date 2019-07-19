@@ -6,7 +6,7 @@ import java.lang.reflect.Method;
 public class BusinessProcessorHandler implements InvocationHandler {
     private Object target = null;
 
-    public BusinessProcessorHandler(Object target){
+    public BusinessProcessorHandler(Object target) {
         this.target = target;
     }
 

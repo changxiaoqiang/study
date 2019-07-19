@@ -1,6 +1,19 @@
 package com.demo.test;
 
 public class HeapSort extends Sort {
+    public static void main(String[] args) {
+        HeapSort sort = new HeapSort();
+        String[] sortArr = new String[]{"S", "O", "R", "T", "E", "X", "A", "M", "P", "L", "E"};
+        int[] arr = {49, 38, 27, 65, 97, 76, 13, 80, 81, 50, 52, 66};
+        showArr(arr);
+        System.out.println("====================");
+        sort.buildMaxHeap(arr);
+//        sort.maxHeap(arr, arr.length - 1, 0);
+        sort.sort(arr);
+        System.out.println("====================");
+        showArr(arr);
+    }
+
     /**
      * 初始化构建堆
      *
@@ -53,7 +66,7 @@ public class HeapSort extends Sort {
     public int[] sort(int[] data, int... args) {
         //每次循环都能取到一个最大值，该值为根节点
         for (int i = data.length - 1; i > 0; i--) {
-            swap(data, 0 , i);
+            swap(data, 0, i);
             //每次调整都是从根节点开始i不断减小，保证前一次最大节点不会参与到调整堆
             maxHeap(data, i, 0);
             showArr(data);
@@ -78,6 +91,7 @@ public class HeapSort extends Sort {
     private int getChildLeftIndex(int current) {
         return (current << 1) + 1;
     }
+
     /**
      * 获得右子节点的位置
      *
@@ -85,19 +99,6 @@ public class HeapSort extends Sort {
      */
     private int getChildRightIndex(int current) {
         return (current << 1) + 2;
-    }
-
-    public static void main(String[] args) {
-        HeapSort sort = new HeapSort();
-        String[] sortArr = new String[]{"S", "O", "R", "T", "E", "X", "A", "M", "P", "L", "E"};
-        int[] arr = {49, 38, 27, 65, 97, 76, 13, 80, 81, 50, 52, 66};
-        showArr(arr);
-        System.out.println("====================");
-        sort.buildMaxHeap(arr);
-//        sort.maxHeap(arr, arr.length - 1, 0);
-        sort.sort(arr);
-        System.out.println("====================");
-        showArr(arr);
     }
 }
 

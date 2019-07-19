@@ -23,7 +23,6 @@ public class ConcurrencyTest {
         }
 
 
-
         System.out.println(userNames);
         serial();
         Concurrency();
@@ -57,8 +56,7 @@ public class ConcurrencyTest {
      * Occasionally a method may wish to test whether the current thread has been interrupted,
      * and if so, to immediately throw this exception.
      *
-     * @throws InterruptedException
-     * 这个异常一般发生在线程中，当一个正在执行的线程被中断时就会出现这个异常
+     * @throws InterruptedException 这个异常一般发生在线程中，当一个正在执行的线程被中断时就会出现这个异常
      * 假如有两个线程，第一个线程正在运行，第二个没有运行，这时第二个线程启动运行并要求中断第一个线程，
      * 第一个线程就会出现InterruptedException异常并执行该异常下的语句。
      */

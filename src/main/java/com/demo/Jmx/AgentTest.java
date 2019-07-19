@@ -1,7 +1,5 @@
 package com.demo.Jmx;
 
-import com.sun.jdmk.comm.HtmlAdaptorServer;
-
 import javax.management.Attribute;
 import javax.management.MBeanServer;
 import javax.management.MBeanServerConnection;

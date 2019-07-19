@@ -7,10 +7,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
-
 /**
  * 最简单的八字乾造实现
- *批八字算命，只看日柱
+ * 批八字算命，只看日柱
+ *
  * @author luozhuang 大师♂罗莊
  */
 public class LuozhuangTanZao {
@@ -265,11 +265,24 @@ public class LuozhuangTanZao {
 
     }
 
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        LuozhuangTanZao test = new LuozhuangTanZao();
+        try {
+            System.out.print(test.paipan("1989-02-11 22"));
+            // TODO code application logic here
+        } catch (ParseException ex) {
+            Logger.getLogger(LuozhuangTanZao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
-    /**八字乾造，只看日柱，大家可以根据网上资料扩充
-     *比如根据月柱日柱看也有文章，很多
+    /**
+     * 八字乾造，只看日柱，大家可以根据网上资料扩充
+     * 比如根据月柱日柱看也有文章，很多
+     *
      * @param paramString 日柱
-     * @return
      */
     public String DayText(String paramString) {
         String str = "";
@@ -286,7 +299,6 @@ public class LuozhuangTanZao {
     }
 
     /**
-     *
      * @param man 生日 yyyy-MM-dd HH
      * @return 返回乾造
      * @throws ParseException
@@ -301,14 +313,13 @@ public class LuozhuangTanZao {
             return "输入不正确" + ex.getMessage();
         }
 
-        return paipan(mancal) ;
+        return paipan(mancal);
 
     }
 
     /**
-     *
-     * @param year 生日
-     * @param   DateFormat 比如 yyyy-MM-dd HH
+     * @param year       生日
+     * @param DateFormat 比如 yyyy-MM-dd HH
      * @return 返回java  Calendar
      * @throws ParseException
      */
@@ -330,12 +341,11 @@ public class LuozhuangTanZao {
  * 申时16.00－18.00,酉时18.00－20.00,戌时20.00－22.00,亥时22.00－24.00
  *
  */
-        int time =cal.get(Calendar.HOUR_OF_DAY)/2;
+        int time = cal.get(Calendar.HOUR_OF_DAY) / 2;
 
         System.out.println("此人八字【" + lunar.getYearGanZhi(time) + "】");
         //获取生肖
         System.out.println("此人的农历生肖【" + lunar.animalsYear() + "】");
-
 
 
         String GanZhi = lunar.getYearGanZhi(time);//取八字
@@ -347,20 +357,7 @@ public class LuozhuangTanZao {
         String ganzitime = tempchar[3];//时柱
 
         //八字乾造只看日柱 tempchar[2]
-        return DayText( tempchar[2]);
-    }
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        LuozhuangTanZao test=new LuozhuangTanZao();
-        try {
-            System.out.print( test.paipan("1989-02-11 22"));
-            // TODO code application logic here
-        } catch (ParseException ex) {
-            Logger.getLogger(LuozhuangTanZao.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        return DayText(tempchar[2]);
     }
 }
 

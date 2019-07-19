@@ -1,8 +1,6 @@
 package com.demo.Sort;
 
 public abstract class Sort {
-    public abstract int[] sort(int[] numbers);
-
     public static void showArr(int[] arr) {
         System.out.print("[");
         for (int num : arr) {
@@ -10,4 +8,6 @@ public abstract class Sort {
         }
         System.out.println("]");
     }
+
+    public abstract int[] sort(int[] numbers);
 }

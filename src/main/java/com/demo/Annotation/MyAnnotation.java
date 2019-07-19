@@ -59,11 +59,6 @@ public class MyAnnotation {
     @Target({ElementType.TYPE, ElementType.METHOD})
     @Retention(RetentionPolicy.RUNTIME)
     public @interface Yts {
-        // 定义枚举
-        public enum YtsType {
-            util, entity, service, model
-        }
-
         // 设置默认值
         public YtsType classType() default YtsType.util;
 
@@ -71,5 +66,10 @@ public class MyAnnotation {
         int[] arr() default {3, 7, 5};
 
         String color() default "blue";
+
+        // 定义枚举
+        public enum YtsType {
+            util, entity, service, model
+        }
     }
 }

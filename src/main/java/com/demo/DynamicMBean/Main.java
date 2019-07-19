@@ -1,15 +1,12 @@
 package com.demo.DynamicMBean;
 
-import com.demo.Jmx.Hello;
 import com.demo.Proxy.BusinessProcessorHandler;
-import com.sun.jdmk.comm.HtmlAdaptorServer;
 
 import javax.management.MBeanServer;
 import javax.management.MBeanServerFactory;
 import javax.management.ObjectName;
 import javax.management.StandardMBean;
 import java.lang.reflect.Proxy;
-import java.net.URLEncoder;
 
 /**
  * 动态 MBbean
@@ -64,10 +61,10 @@ public class Main {
 
     private static void manage() throws Exception {
         ObjectName objectName = new ObjectName("objectName:id=ServerMonitor1");
-        System.out.println(mBeanServer.getAttribute(objectName,"UpTime"));
+        System.out.println(mBeanServer.getAttribute(objectName, "UpTime"));
         System.out.print("showTime:");
-        mBeanServer.invoke(objectName, "showTime",null, null);
-        System.out.println(mBeanServer.invoke(objectName, "showTime",null, null));
+        mBeanServer.invoke(objectName, "showTime", null, null);
+        System.out.println(mBeanServer.invoke(objectName, "showTime", null, null));
 
         System.out.println("1============================");
         MBeanServerHandler handler = new MBeanServerHandler(mBeanServer, objectName);
@@ -84,9 +81,9 @@ public class Main {
 
 
         ObjectName newObjectName = new ObjectName("objectName:id=ServerMonitor2");
-        System.out.println(mBeanServer.getAttribute(newObjectName,"UpTime"));
+        System.out.println(mBeanServer.getAttribute(newObjectName, "UpTime"));
         System.out.print("newObjectName showTime:");
-        System.out.println(mBeanServer.invoke(newObjectName, "showTime",null, null));
+        System.out.println(mBeanServer.invoke(newObjectName, "showTime", null, null));
 
         System.out.println("=====");
     }

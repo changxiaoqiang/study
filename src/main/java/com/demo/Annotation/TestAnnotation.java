@@ -22,27 +22,6 @@ public class TestAnnotation {
         System.out.println(str);
     }
 
-//    @MyMethodAnnotation(desc = "The class method getId", uri = "com.test.annotation.Test#getId")
-    public String getId() {
-        return id;
-    }
-
-    @MyMethodAnnotation(desc = "The class method", uri = "com.test.annotation.Test#setId")
-    public void setId(String id) {
-        System.out.println(" method info: " + id);
-        this.id = id;
-    }
-
-    @MyMethodAnnotation(desc = "The class method sayHello", uri = "com.test.annotation.Test#sayHello")
-    @Yts
-    public void sayHello(String name) {
-        if (name == null || name.equals("")) {
-            System.out.println("hello world!");
-        } else {
-            System.out.println(name + "\t:say hello world!");
-        }
-    }
-
     public static void main(String[] args) throws Exception {
         System.out.println(InterfaceAnnotation.class.getAnnotation(Description.class).value());
         System.out.println(InterfaceAnnotation.class.getDeclaredMethod("getRefreshInterval"));
@@ -71,5 +50,26 @@ public class TestAnnotation {
         Field field = clazz.getDeclaredField("id");
         MyFieldAnnotation myFieldAnnotation = field.getAnnotation(MyFieldAnnotation.class);
         System.out.println(myFieldAnnotation.desc() + " " + myFieldAnnotation.uri());
+    }
+
+    //    @MyMethodAnnotation(desc = "The class method getId", uri = "com.test.annotation.Test#getId")
+    public String getId() {
+        return id;
+    }
+
+    @MyMethodAnnotation(desc = "The class method", uri = "com.test.annotation.Test#setId")
+    public void setId(String id) {
+        System.out.println(" method info: " + id);
+        this.id = id;
+    }
+
+    @MyMethodAnnotation(desc = "The class method sayHello", uri = "com.test.annotation.Test#sayHello")
+    @Yts
+    public void sayHello(String name) {
+        if (name == null || name.equals("")) {
+            System.out.println("hello world!");
+        } else {
+            System.out.println(name + "\t:say hello world!");
+        }
     }
 }

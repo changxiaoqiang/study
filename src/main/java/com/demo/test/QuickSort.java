@@ -1,6 +1,17 @@
 package com.demo.test;
 
 public class QuickSort extends Sort {
+    public static void main(String[] args) {
+        Sort sort = new QuickSort();
+        int[] arr = {38, 65, 24, 97, 13, 76, 25, 49, 26, 27};
+        showArr(arr);
+        System.out.println("====================");
+
+        int[] result = sort.sort(arr, 0, arr.length - 1);
+        System.out.println("====================");
+        showArr(result);
+    }
+
     @Override
     public int[] sort(int[] arr, int... args) {
         if (args.length != 2) {
@@ -32,16 +43,5 @@ public class QuickSort extends Sort {
         showArr(arr);
         //中轴记录到尾
         return low;
-    }
-
-    public static void main(String[] args) {
-        Sort sort = new QuickSort();
-        int[] arr = {38, 65, 24, 97, 13, 76, 25, 49, 26, 27};
-        showArr(arr);
-        System.out.println("====================");
-
-        int[] result = sort.sort(arr, 0, arr.length - 1);
-        System.out.println("====================");
-        showArr(result);
     }
 }

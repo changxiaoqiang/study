@@ -12,6 +12,17 @@ package com.demo.Sort;
  */
 
 public class ShellSort extends Sort {
+    public static void main(String[] args) {
+        Sort sort = new ShellSort();
+        int[] arr = {49, 38, 65, 97, 76, 13, 27, 64};
+        showArr(arr);
+        System.out.println("====================");
+
+        int[] result = sort.sort(arr);
+        System.out.println("====================");
+        showArr(result);
+    }
+
     @Override
     public int[] sort(int[] data) {
         int j = 0;
@@ -34,16 +45,5 @@ public class ShellSort extends Sort {
             }
         }
         return data;
-    }
-
-    public static void main(String[] args) {
-        Sort sort = new ShellSort();
-        int[] arr = {49, 38, 65, 97, 76, 13, 27, 64};
-        showArr(arr);
-        System.out.println("====================");
-
-        int[] result = sort.sort(arr);
-        System.out.println("====================");
-        showArr(result);
     }
 }

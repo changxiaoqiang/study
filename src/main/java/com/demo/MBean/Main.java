@@ -26,7 +26,7 @@ public class Main {
 
     private static void manage() throws Exception {
         ObjectName objectName = new ObjectName("objectName:id=ServerMonitor1");
-        System.out.println(mBeanServer.getAttribute(objectName,"UpTime"));
+        System.out.println(mBeanServer.getAttribute(objectName, "UpTime"));
 
         System.out.println(mBeanServer.invoke(objectName, "showName", null, null));
 

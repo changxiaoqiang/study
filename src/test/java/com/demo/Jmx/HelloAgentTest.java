@@ -5,13 +5,11 @@ import org.junit.Before;
 import org.junit.Test;
 
 import javax.management.Attribute;
-import javax.management.MBeanServer;
 import javax.management.MBeanServerConnection;
 import javax.management.ObjectName;
-import javax.management.remote.*;
-import java.lang.management.ManagementFactory;
-import java.rmi.registry.LocateRegistry;
-import java.rmi.registry.Registry;
+import javax.management.remote.JMXConnector;
+import javax.management.remote.JMXConnectorFactory;
+import javax.management.remote.JMXServiceURL;
 
 /**
  * HelloAgent Tester.
@@ -58,7 +56,6 @@ public class HelloAgentTest {
         server.invoke(helloName, "printHello", new String[]{"牛逼了"}, new String[]{String.class.getName()});
         connector.close();
     }
-
 
 
 }
